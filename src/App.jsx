@@ -39,7 +39,7 @@ const App = () => {
                 `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
                 : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
             const response = await fetch(endpoint, API_OPTIONS);
-
+            
             if (!response.ok) {
                 throw new error('Failed to fetch movie');
             }
@@ -76,7 +76,6 @@ const App = () => {
     const loadTrendingMovies = async () => {
         try {
             const movies = await getTrendingMovies();
-            console.log(movies);
 
             setTrendingMovies(movies);
         } catch (error) {
@@ -95,7 +94,7 @@ const App = () => {
     useEffect(() => {
         // Load trending movies when the component mounts
         loadTrendingMovies();
-    }, []);
+    }, []);    
 
     return (
         <main>
@@ -125,6 +124,7 @@ const App = () => {
                 <section className='all-movies'>
                     <h2>All Movies</h2>
 
+                    
                     {isLoading ? (
                         <Spinner />
                     ) : errorMessage ? (

@@ -23,7 +23,6 @@ export const updateSearchCount = async (searchTerm, movie) => {
         // If it exists, increment the count
         if (result.documents.length > 0) {
             const doc = result.documents[0];
-            console.log('Found document:', doc);
 
             await database.updateDocument(
                 DATABASE_ID,
